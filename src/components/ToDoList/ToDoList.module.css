@@ -1,0 +1,17 @@
+.addButton {
+  background: 0;
+  background-color: #db4c3f;
+  color: #fff !important;
+  text-shadow: none;
+  border: 1px solid transparent;
+}
+.completed {
+  font-style: italic;
+  color: #cdcdcd;
+  text-decoration: line-through;
+}
+.main {
+  background: #fff;
+  margin: 130px 0 40px 0;
+  position: relative;
+}

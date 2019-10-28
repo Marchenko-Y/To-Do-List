@@ -1,0 +1,15 @@
+.header {
+  grid-area: h;
+  height: 44px;
+  position: relative;
+  z-index: 400;
+  background-color: #db4c3f;
+  padding: 0 20px;
+}
+.header img {
+  float: left;
+  padding-top: 7px;
+  width: 24px;
+  height: 24px;
+  padding: 2px;
+}
