@@ -1,29 +1,40 @@
 import React from "react";
-import styles from "./ToDoList.module.css";
 import { connect } from "react-redux";
 import ToDoList from "./ToDoList";
 import {
-  checkActionCreator,
-  uncheckActionCreator,
   addTaskActionCreator,
-  updateTaskActionCreator
+  updateTaskActionCreator,
+  toogleCheckedActionCreator
 } from "../../redux/reducers/todolist-reducer";
 
+const getVisibleTasks = (tasks, filter) => {
+  switch (filter) {
+    case "SHOW-ALL":
+      return tasks;
+    case "SHOW-ACTIVE":
+      return tasks.filter(t => !t.checked);
+    case "SHOW-COMPLETED":
+      return tasks.filter(t => t.checked);
+    default:
+      return tasks;
+  }
+};
+
 const mapStateToProps = state => {
-  console.log(state);
   return {
-    tasks: state.toDoList.tasks,
+    tasks: getVisibleTasks(
+      state.toDoList.tasks,
+      state.toDoList.visibilityFilter
+    ),
     newTaskText: state.toDoList.newTaskText
   };
 };
 const mapDispathToProps = dispatch => {
   return {
-    check: taskId => {
-      dispatch(checkActionCreator(taskId));
+    toogleChecked: taskId => {
+      dispatch(toogleCheckedActionCreator(taskId));
     },
-    uncheck: taskId => {
-      dispatch(uncheckActionCreator(taskId));
-    },
+
     addTask: () => {
       dispatch(addTaskActionCreator());
     },

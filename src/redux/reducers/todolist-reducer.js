@@ -1,4 +1,5 @@
 const initialState = {
+  visibilityFilter: "SHOW-ALL",
   tasks: [
     {
       id: 1,
@@ -23,26 +24,17 @@ const initialState = {
 };
 const toDoListReducer = (state = initialState, action) => {
   switch (action.type) {
-    case "CHECK":
+    case "TOOGLE_CHECKED":
       return {
         ...state,
-        tasks: state.tasks.map(n => {
-          if (n.id == action.taskId) {
-            return { ...n, checked: true };
+        tasks: state.tasks.map(t => {
+          if (t.id == action.taskId) {
+            return { ...t, checked: !t.checked };
           }
-          return n;
+          return t;
         })
       };
-    case "UNCHECK":
-      return {
-        ...state,
-        tasks: state.tasks.map(n => {
-          if (n.id == action.taskId) {
-            return { ...n, checked: false };
-          }
-          return n;
-        })
-      };
+
     case "ADD-TASK":
       const newTask = {
         id: action.id,
@@ -60,6 +52,12 @@ const toDoListReducer = (state = initialState, action) => {
         ...state,
         newTaskText: action.newTask
       };
+    case "SET-VISIBILITY-FILTER":
+      debugger;
+      return {
+        ...state,
+        visibilityFilter: action.filter
+      };
 
     default:
       return state;
@@ -67,17 +65,22 @@ const toDoListReducer = (state = initialState, action) => {
 };
 
 let nextTodoId = 4;
-export const checkActionCreator = taskId => {
-  return { type: "CHECK", taskId };
+export const toogleCheckedActionCreator = taskId => {
+  return { type: "TOOGLE_CHECKED", taskId };
 };
-export const uncheckActionCreator = taskId => {
-  return { type: "UNCHECK", taskId };
-};
+
 export const addTaskActionCreator = () => {
   return { type: "ADD-TASK", id: nextTodoId++ };
 };
 export const updateTaskActionCreator = text => {
   return { type: "UPDATE-NEW-TASKS-TEXT", newTask: text };
+};
+
+export const setVisibilityFilterActionCreator = filter => {
+  return {
+    type: "SET-VISIBILITY-FILTER",
+    filter
+  };
 };
 
 export default toDoListReducer;

@@ -4,9 +4,7 @@ import ToDo from "./ToDo";
 
 const ToDoList = props => {
   const changedCheckboxHandler = event => {
-    event.target.checked
-      ? props.check(event.target.id)
-      : props.uncheck(event.target.id);
+    props.toogleChecked(event.target.id);
   };
 
   const tasks = props.tasks.map(t => {

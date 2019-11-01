@@ -1,26 +1,30 @@
 import React from "react";
 import styles from "./Footer.module.css";
-import { NavLink } from "react-router-dom";
 
-const Footer = () => {
+const Footer = props => {
+  debugger;
+  const onClickFilterButton = event => {
+    const filter = event.target.value;
+    props.setVisibilityFilter(filter);
+  };
   return (
     <div className={styles.footer}>
       <span>Show:</span>
-      <ul className={styles.filters}>
+      <ul className={styles.filterButton}>
         <li>
-          <NavLink to="/" activeClassName={styles.active}>
+          <button onClick={onClickFilterButton} value="SHOW-ALL">
             All
-          </NavLink>
+          </button>
         </li>
         <li>
-          <NavLink to="/active" activeClassName={styles.active}>
+          <button onClick={onClickFilterButton} value="SHOW-ACTIVE">
             Active
-          </NavLink>
+          </button>
         </li>
         <li>
-          <NavLink to="/completed" activeClassName={styles.active}>
+          <button onClick={onClickFilterButton} value="SHOW-COMPLETED">
             Completed
-          </NavLink>
+          </button>
         </li>
       </ul>
     </div>

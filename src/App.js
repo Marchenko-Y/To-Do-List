@@ -2,25 +2,21 @@ import React from "react";
 import "./App.css";
 import Header from "./components/Header/Header";
 import ToDoListContainer from "./components/ToDoList/ToDoListContainer";
-import Footer from "./components/Footer/Footer";
-import { BrowserRouter, Route } from "react-router-dom";
-import ActiveTasks from "./components/Footer/ActiveTasks/ActiveTasks";
+import FooterContainer from "./components/Footer/FooterContainer";
 
 const App = () => {
   return (
-    <BrowserRouter>
+    //<BrowserRouter>
+    <div>
+      <Header />
       <div>
-        <Header />
-        <div>
-          <h1>TO DO List</h1>
-        </div>
-
-        <ToDoListContainer />
-        <Footer />
-        <Route path="#/active" component={ActiveTasks} />
-        {/* <Route path="/completed" component={CompletedTasks} /> */}
+        <h1>TO DO List</h1>
       </div>
-    </BrowserRouter>
+
+      <ToDoListContainer />
+      <FooterContainer />
+    </div>
+    //</BrowserRouter>
   );
 };
 

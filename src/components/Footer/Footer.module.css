@@ -1,4 +1,5 @@
 .footer {
+  display: flex;
   color: #777;
   padding: 10px 15px;
   height: 20px;
@@ -6,24 +7,13 @@
   border-top: 1px solid #e6e6e6;
 }
 
-.filters {
-  margin: 0;
-  padding: 0;
+ul.filterButton {
+  margin: 0; /* Обнуляем значение отступов */
+  padding: 4px; /* Значение полей */
   list-style: none;
-  position: absolute;
-  right: 0;
-  left: 0;
 }
-
-.filters li a {
-  color: black;
-  margin: 3px;
-  padding: 3px 7px;
-  text-decoration: none;
-  border: 1px solid transparent;
-  border-radius: 3px;
-}
-
-.filters li a.active {
-  color: blue;
+ul.filterButton li {
+  display: inline; /* Отображать как строчный элемент */
+  margin-right: 5px; /* Отступ слева */
+  padding: 3px; /* Поля вокруг текста */
 }
