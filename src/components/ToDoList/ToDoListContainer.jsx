@@ -4,7 +4,8 @@ import ToDoList from "./ToDoList";
 import {
   addTaskActionCreator,
   updateTaskActionCreator,
-  toogleCheckedActionCreator
+  toogleCheckedActionCreator,
+  deleteTaskActionCreator
 } from "../../redux/reducers/todolist-reducer";
 
 const getVisibleTasks = (tasks, filter) => {
@@ -40,6 +41,9 @@ const mapDispathToProps = dispatch => {
     },
     updateTask: text => {
       dispatch(updateTaskActionCreator(text));
+    },
+    deleteTask: taskId => {
+      dispatch(deleteTaskActionCreator(taskId));
     }
   };
 };

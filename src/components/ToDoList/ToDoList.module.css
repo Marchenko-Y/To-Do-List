@@ -15,3 +15,21 @@
   margin: 130px 0 40px 0;
   position: relative;
 }
+button.deleteButton {
+  padding: 0;
+  cursor: pointer;
+  background: 0 0;
+  border: 0;
+}
+.deleteButton {
+  font-size: 21px;
+  font-weight: 700;
+  line-height: 1;
+  color: #000;
+  text-shadow: 0 1px 0 #fff;
+  filter: alpha(opacity=20);
+  opacity: 0.2;
+}
+button.deleteButton:hover {
+  opacity: 0.5;
+}

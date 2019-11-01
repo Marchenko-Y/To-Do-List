@@ -6,6 +6,10 @@ const ToDoList = props => {
   const changedCheckboxHandler = event => {
     props.toogleChecked(event.target.id);
   };
+  const deleteTask = event => {
+    console.log(event);
+    props.deleteTask(event.target.id);
+  };
 
   const tasks = props.tasks.map(t => {
     return (
@@ -14,6 +18,7 @@ const ToDoList = props => {
         checked={t.checked}
         text={t.text}
         changedCheckboxHandler={changedCheckboxHandler}
+        deleteTask={deleteTask}
       />
     );
   });

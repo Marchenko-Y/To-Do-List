@@ -12,6 +12,13 @@ const ToDo = props => (
     <span className={props.checked ? styles.completed : null}>
       {props.text}
     </span>
+    <button
+      onClick={props.deleteTask}
+      id={props.id}
+      className={styles.deleteButton}
+    >
+      x
+    </button>
   </div>
 );
 

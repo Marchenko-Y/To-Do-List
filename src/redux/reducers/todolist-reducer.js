@@ -23,6 +23,7 @@ const initialState = {
   newTaskText: ""
 };
 const toDoListReducer = (state = initialState, action) => {
+  debugger;
   switch (action.type) {
     case "TOOGLE_CHECKED":
       return {
@@ -46,6 +47,11 @@ const toDoListReducer = (state = initialState, action) => {
         ...state,
         newTaskText: "",
         tasks: [...state.tasks, newTask]
+      };
+    case "DELETE-TASK":
+      return {
+        ...state,
+        tasks: state.tasks.filter(t => t.id != action.taskId)
       };
     case "UPDATE-NEW-TASKS-TEXT":
       return {
@@ -71,6 +77,9 @@ export const toogleCheckedActionCreator = taskId => {
 
 export const addTaskActionCreator = () => {
   return { type: "ADD-TASK", id: nextTodoId++ };
+};
+export const deleteTaskActionCreator = taskId => {
+  return { type: "DELETE-TASK", taskId };
 };
 export const updateTaskActionCreator = text => {
   return { type: "UPDATE-NEW-TASKS-TEXT", newTask: text };
