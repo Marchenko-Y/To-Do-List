@@ -1,5 +1,13 @@
+const TOOGLE_CHECKED = "TOOGLE_CHECKED";
+const ADD_TASK = "ADD_TASK";
+const DELETE_TASK = "DELETE_TASK";
+const UPDATE_NEW_TASKS_TEXT = "UPDATE_NEW_TASKS_TEXT";
+const UPDATE_NEW_DATE = "UPDATE_NEW_DATE";
+const SET_VISIBILITY_FILTER = "SET_VISIBILITY_FILTER";
+
+const currentDate = new Date();
 const initialState = {
-  visibilityFilter: "SHOW-ALL",
+  visibilityFilter: "SHOW_ALL",
   tasks: [
     {
       id: 1,
@@ -20,7 +28,8 @@ const initialState = {
       checked: true
     }
   ],
-  newTaskText: ""
+  newTaskText: "",
+  newTaskDate: currentDate
 };
 const toDoListReducer = (state = initialState, action) => {
   debugger;
@@ -36,30 +45,38 @@ const toDoListReducer = (state = initialState, action) => {
         })
       };
 
-    case "ADD-TASK":
+    case "ADD_TASK":
       const newTask = {
         id: action.id,
         text: state.newTaskText,
-        date: "20.10.2019",
+        date: state.newTaskDate,
         checked: false
       };
+      debugger;
       return {
         ...state,
         newTaskText: "",
+        newTaskDate: currentDate,
         tasks: [...state.tasks, newTask]
       };
-    case "DELETE-TASK":
+
+    case "DELETE_TASK":
       return {
         ...state,
         tasks: state.tasks.filter(t => t.id != action.taskId)
       };
-    case "UPDATE-NEW-TASKS-TEXT":
+    case "UPDATE_NEW_TASKS_TEXT":
       return {
         ...state,
         newTaskText: action.newTask
       };
-    case "SET-VISIBILITY-FILTER":
+    case "UPDATE_NEW_DATE":
       debugger;
+      return {
+        ...state,
+        newTaskDate: action.newDate
+      };
+    case "SET_VISIBILITY_FILTER":
       return {
         ...state,
         visibilityFilter: action.filter
@@ -71,25 +88,26 @@ const toDoListReducer = (state = initialState, action) => {
 };
 
 let nextTodoId = 4;
-export const toogleCheckedActionCreator = taskId => {
-  return { type: "TOOGLE_CHECKED", taskId };
+export const toogleChecked = taskId => {
+  return { type: TOOGLE_CHECKED, taskId };
 };
 
-export const addTaskActionCreator = () => {
-  return { type: "ADD-TASK", id: nextTodoId++ };
+export const addTask = () => {
+  return { type: ADD_TASK, id: nextTodoId++ };
 };
-export const deleteTaskActionCreator = taskId => {
-  return { type: "DELETE-TASK", taskId };
+export const deleteTask = taskId => {
+  return { type: DELETE_TASK, taskId };
 };
-export const updateTaskActionCreator = text => {
-  return { type: "UPDATE-NEW-TASKS-TEXT", newTask: text };
+export const updateTask = text => {
+  return { type: UPDATE_NEW_TASKS_TEXT, newTask: text };
+};
+export const updateDate = date => {
+  debugger;
+  return { type: UPDATE_NEW_DATE, newDate: date };
 };
 
-export const setVisibilityFilterActionCreator = filter => {
-  return {
-    type: "SET-VISIBILITY-FILTER",
-    filter
-  };
+export const setVisibilityFilter = filter => {
+  return { type: SET_VISIBILITY_FILTER, filter };
 };
 
 export default toDoListReducer;

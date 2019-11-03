@@ -2,7 +2,6 @@ import React from "react";
 import styles from "./Footer.module.css";
 
 const Footer = props => {
-  debugger;
   const onClickFilterButton = event => {
     const filter = event.target.value;
     props.setVisibilityFilter(filter);

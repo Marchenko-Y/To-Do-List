@@ -4,6 +4,7 @@
   color: #fff !important;
   text-shadow: none;
   border: 1px solid transparent;
+  cursor: pointer;
 }
 .completed {
   font-style: italic;

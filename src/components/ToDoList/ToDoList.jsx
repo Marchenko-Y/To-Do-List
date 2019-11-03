@@ -1,14 +1,22 @@
 import React from "react";
 import styles from "./ToDoList.module.css";
 import ToDo from "./ToDo";
+import Calendar from "./Calendar/Calendar";
 
 const ToDoList = props => {
   const changedCheckboxHandler = event => {
     props.toogleChecked(event.target.id);
   };
   const deleteTask = event => {
-    console.log(event);
     props.deleteTask(event.target.id);
+  };
+
+  const addTask = () => {
+    props.addTask();
+  };
+  const onTaskChange = event => {
+    const text = event.target.value;
+    props.updateTask(text);
   };
 
   const tasks = props.tasks.map(t => {
@@ -23,21 +31,26 @@ const ToDoList = props => {
     );
   });
 
-  const addTask = () => {
-    props.addTask();
-  };
-  const onTaskChange = event => {
-    const text = event.target.value;
-    props.updateTask(text);
-  };
-
   return (
     <section className={styles.main}>
+      <span>
+        <strong>Сегодня</strong> сб 2 ноября
+      </span>
+      <div>{tasks}</div>
+
       <div>
-        <textarea
+        <input
+          type="text"
           placeholder="Введите сообщение"
           onChange={onTaskChange}
           value={props.newTaskText}
+        />
+      </div>
+      <div>
+        {/* <input type="date" required /> */}
+        <Calendar
+          updateDate={props.updateDate}
+          newTaskDate={props.newTaskDate}
         />
       </div>
       <div>
@@ -45,7 +58,6 @@ const ToDoList = props => {
           Add task
         </button>
       </div>
-      <div>{tasks}</div>
     </section>
   );
 };

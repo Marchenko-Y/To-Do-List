@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { setVisibilityFilterActionCreator } from "../../redux/reducers/todolist-reducer";
+import { setVisibilityFilter } from "../../redux/reducers/todolist-reducer";
 import Footer from "./Footer";
 
 const mapStateToProps = state => {
@@ -9,7 +9,7 @@ const mapStateToProps = state => {
 const mapDispathToProps = dispatch => {
   return {
     setVisibilityFilter: filter => {
-      dispatch(setVisibilityFilterActionCreator(filter));
+      dispatch(setVisibilityFilter(filter));
     }
   };
 };

@@ -2,10 +2,11 @@ import React from "react";
 import { connect } from "react-redux";
 import ToDoList from "./ToDoList";
 import {
-  addTaskActionCreator,
-  updateTaskActionCreator,
-  toogleCheckedActionCreator,
-  deleteTaskActionCreator
+  addTask,
+  updateTask,
+  toogleChecked,
+  deleteTask,
+  updateDate
 } from "../../redux/reducers/todolist-reducer";
 
 const getVisibleTasks = (tasks, filter) => {
@@ -27,29 +28,36 @@ const mapStateToProps = state => {
       state.toDoList.tasks,
       state.toDoList.visibilityFilter
     ),
-    newTaskText: state.toDoList.newTaskText
+    newTaskText: state.toDoList.newTaskText,
+    newTaskDate: state.toDoList.newTaskDate
   };
 };
-const mapDispathToProps = dispatch => {
-  return {
-    toogleChecked: taskId => {
-      dispatch(toogleCheckedActionCreator(taskId));
-    },
+// const mapDispathToProps = dispatch => {
+//   return {
+//     toogleChecked: taskId => {
+//       dispatch(toogleCheckedActionCreator(taskId));
+//     },
 
-    addTask: () => {
-      dispatch(addTaskActionCreator());
-    },
-    updateTask: text => {
-      dispatch(updateTaskActionCreator(text));
-    },
-    deleteTask: taskId => {
-      dispatch(deleteTaskActionCreator(taskId));
-    }
-  };
-};
+//     addTask: () => {
+//       dispatch(addTaskActionCreator());
+//     },
+//     updateTask: text => {
+//       dispatch(updateTaskActionCreator(text));
+//     },
+//     deleteTask: taskId => {
+//       dispatch(deleteTaskActionCreator(taskId));
+//     }
+//   };
+// };
 
 const ToDoListContainer = connect(
   mapStateToProps,
-  mapDispathToProps
+  {
+    toogleChecked,
+    addTask,
+    updateTask,
+    deleteTask,
+    updateDate
+  }
 )(ToDoList);
 export default ToDoListContainer;
