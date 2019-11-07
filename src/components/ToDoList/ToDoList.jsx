@@ -1,16 +1,11 @@
 import React from "react";
-import styles from "./ToDoList.module.css";
-import ToDo from "./ToDo";
+import TodayToDoList from "./TodayToDoList/TodayToDoList";
 import Calendar from "./Calendar/Calendar";
+import styles from "./ToDoList.module.css";
+import { Route } from "react-router-dom";
 
 const ToDoList = props => {
-  const changedCheckboxHandler = event => {
-    props.toogleChecked(event.target.id);
-  };
-  const deleteTask = event => {
-    props.deleteTask(event.target.id);
-  };
-
+  debugger;
   const addTask = () => {
     props.addTask();
   };
@@ -18,26 +13,18 @@ const ToDoList = props => {
     const text = event.target.value;
     props.updateTask(text);
   };
-
-  const tasks = props.tasks.map(t => {
-    return (
-      <ToDo
-        id={t.id}
-        checked={t.checked}
-        text={t.text}
-        changedCheckboxHandler={changedCheckboxHandler}
-        deleteTask={deleteTask}
-      />
-    );
-  });
-
   return (
-    <section className={styles.main}>
-      <span>
-        <strong>Сегодня</strong> сб 2 ноября
-      </span>
-      <div>{tasks}</div>
-
+    <div className={styles.main}>
+      <Route
+        path="/today"
+        render={() => (
+          <TodayToDoList
+            toogleChecked={props.toogleChecked}
+            deleteTask={props.deleteTask}
+            tasks={props.tasks}
+          />
+        )}
+      />
       <div>
         <input
           type="text"
@@ -47,7 +34,6 @@ const ToDoList = props => {
         />
       </div>
       <div>
-        {/* <input type="date" required /> */}
         <Calendar
           updateDate={props.updateDate}
           newTaskDate={props.newTaskDate}
@@ -58,7 +44,7 @@ const ToDoList = props => {
           Add task
         </button>
       </div>
-    </section>
+    </div>
   );
 };
 export default ToDoList;

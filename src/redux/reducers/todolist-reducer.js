@@ -12,13 +12,13 @@ const initialState = {
     {
       id: 1,
       text: "Learn programming 7 hour every day",
-      date: "20.10.2019",
+      date: "06.11.2019",
       checked: false
     },
     {
       id: 2,
       text: "Smile",
-      date: "20.10.2019",
+      date: "06.11.2019",
       checked: false
     },
     {
@@ -34,7 +34,7 @@ const initialState = {
 const toDoListReducer = (state = initialState, action) => {
   debugger;
   switch (action.type) {
-    case "TOOGLE_CHECKED":
+    case TOOGLE_CHECKED:
       return {
         ...state,
         tasks: state.tasks.map(t => {
@@ -45,7 +45,7 @@ const toDoListReducer = (state = initialState, action) => {
         })
       };
 
-    case "ADD_TASK":
+    case ADD_TASK:
       const newTask = {
         id: action.id,
         text: state.newTaskText,
@@ -60,23 +60,23 @@ const toDoListReducer = (state = initialState, action) => {
         tasks: [...state.tasks, newTask]
       };
 
-    case "DELETE_TASK":
+    case DELETE_TASK:
       return {
         ...state,
         tasks: state.tasks.filter(t => t.id != action.taskId)
       };
-    case "UPDATE_NEW_TASKS_TEXT":
+    case UPDATE_NEW_TASKS_TEXT:
       return {
         ...state,
         newTaskText: action.newTask
       };
-    case "UPDATE_NEW_DATE":
+    case UPDATE_NEW_DATE:
       debugger;
       return {
         ...state,
         newTaskDate: action.newDate
       };
-    case "SET_VISIBILITY_FILTER":
+    case SET_VISIBILITY_FILTER:
       return {
         ...state,
         visibilityFilter: action.filter

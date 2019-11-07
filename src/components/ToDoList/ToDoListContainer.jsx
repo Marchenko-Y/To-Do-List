@@ -1,4 +1,3 @@
-import React from "react";
 import { connect } from "react-redux";
 import ToDoList from "./ToDoList";
 import {
@@ -32,23 +31,6 @@ const mapStateToProps = state => {
     newTaskDate: state.toDoList.newTaskDate
   };
 };
-// const mapDispathToProps = dispatch => {
-//   return {
-//     toogleChecked: taskId => {
-//       dispatch(toogleCheckedActionCreator(taskId));
-//     },
-
-//     addTask: () => {
-//       dispatch(addTaskActionCreator());
-//     },
-//     updateTask: text => {
-//       dispatch(updateTaskActionCreator(text));
-//     },
-//     deleteTask: taskId => {
-//       dispatch(deleteTaskActionCreator(taskId));
-//     }
-//   };
-// };
 
 const ToDoListContainer = connect(
   mapStateToProps,
