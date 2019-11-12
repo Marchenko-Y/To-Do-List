@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { setVisibilityFilter } from "../../redux/reducers/todolist-reducer";
 import "./SideBar.css";
+import { setVisibilityFilter } from "../../redux/reducers/visibilityFilter-reducer";
 
 const SideBar = props => {
   const onClickFilterSidebar = event => {

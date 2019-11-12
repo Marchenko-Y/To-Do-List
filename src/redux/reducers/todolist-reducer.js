@@ -1,17 +1,13 @@
-import { createSelector } from "reselect";
-
 const TOOGLE_CHECKED = "TOOGLE_CHECKED";
 const ADD_TASK = "ADD_TASK";
 const DELETE_TASK = "DELETE_TASK";
 const UPDATE_NEW_TASKS_TEXT = "UPDATE_NEW_TASKS_TEXT";
 const UPDATE_NEW_DATE = "UPDATE_NEW_DATE";
-const SET_VISIBILITY_FILTER = "SET_VISIBILITY_FILTER";
 
 let currentDate = new Date();
 currentDate = currentDate.toISOString().substring(0, 10);
 
 const initialState = {
-  visibilityFilter: "SHOW_ALL",
   tasks: [
     {
       id: 1,
@@ -80,37 +76,11 @@ const toDoListReducer = (state = initialState, action) => {
         ...state,
         newTaskDate: action.newDate
       };
-    case SET_VISIBILITY_FILTER:
-      return {
-        ...state,
-        visibilityFilter: action.filter
-      };
 
     default:
       return state;
   }
 };
-
-const getVisibilityFilter = state => state.visibilityFilter;
-const getTasks = state => state.tasks;
-
-export const getVisibleTasks = createSelector(
-  [getVisibilityFilter, getTasks],
-  (visibilityFilter, tasks) => {
-    switch (visibilityFilter) {
-      case "SHOW-ALL":
-        return tasks;
-      case "SHOW-ACTIVE":
-        return tasks.filter(t => !t.checked);
-      case "SHOW-COMPLETED":
-        return tasks.filter(t => t.checked);
-      case "SHOW-TASK-TODAY":
-        return tasks.filter(t => t.date === currentDate);
-      default:
-        return tasks;
-    }
-  }
-);
 
 let nextTodoId = 4;
 export const toogleChecked = taskId => {
@@ -127,9 +97,6 @@ export const updateTask = text => {
 };
 export const updateDate = date => {
   return { type: UPDATE_NEW_DATE, newDate: date };
-};
-export const setVisibilityFilter = filter => {
-  return { type: SET_VISIBILITY_FILTER, filter };
 };
 
 export default toDoListReducer;

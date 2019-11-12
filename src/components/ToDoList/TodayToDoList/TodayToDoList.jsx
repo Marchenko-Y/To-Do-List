@@ -10,7 +10,6 @@ const TodayToDoList = props => {
   const dayOfWeek = currentDate.toLocaleString(locale, { weekday: "short" });
 
   const tasks = props.tasks.map(t => {
-    debugger;
     if (t.date === currentDate1) {
       return (
         <ToDo

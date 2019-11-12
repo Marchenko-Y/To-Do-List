@@ -5,14 +5,13 @@ import {
   updateTask,
   toogleChecked,
   deleteTask,
-  updateDate,
-  getVisibleTasks
+  updateDate
 } from "../../redux/reducers/todolist-reducer";
+import { getVisibleTasks } from "../../redux/reducers/visibilityFilter-reducer";
 
 const mapStateToProps = state => {
-  debugger;
   return {
-    tasks: getVisibleTasks(state.toDoList),
+    tasks: getVisibleTasks(state.visibilityFilter, state.toDoList),
     newTaskText: state.toDoList.newTaskText,
     newTaskDate: state.toDoList.newTaskDate
   };
