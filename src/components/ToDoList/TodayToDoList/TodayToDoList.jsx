@@ -2,21 +2,26 @@ import React from "react";
 import ToDo from "../ToDo";
 
 const TodayToDoList = props => {
-  const currentDate = new Date();
+  let currentDate = new Date();
+  let currentDate1 = currentDate.toISOString().substring(0, 10);
+
   const locale = "en-us";
   const month = currentDate.toLocaleString(locale, { month: "short" });
   const dayOfWeek = currentDate.toLocaleString(locale, { weekday: "short" });
 
   const tasks = props.tasks.map(t => {
-    return (
-      <ToDo
-        id={t.id}
-        checked={t.checked}
-        text={t.text}
-        toogleChecked={props.toogleChecked}
-        deleteTask={props.deleteTask}
-      />
-    );
+    debugger;
+    if (t.date === currentDate1) {
+      return (
+        <ToDo
+          id={t.id}
+          checked={t.checked}
+          text={t.text}
+          toogleChecked={props.toogleChecked}
+          deleteTask={props.deleteTask}
+        />
+      );
+    }
   });
 
   return (

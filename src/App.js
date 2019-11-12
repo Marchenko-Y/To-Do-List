@@ -9,10 +9,12 @@ import SideBar from "./components/SideBar/SideBar";
 const App = () => {
   return (
     <BrowserRouter>
-      <div>
+      <div className="app-wrapper">
         <Header />
         <SideBar />
+
         <ToDoListContainer />
+
         <FooterContainer />
       </div>
     </BrowserRouter>

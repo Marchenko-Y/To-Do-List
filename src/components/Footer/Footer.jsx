@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./Footer.module.css";
+import "./Footer.css";
 
 const Footer = props => {
   const onClickFilterButton = event => {
@@ -7,9 +7,9 @@ const Footer = props => {
     props.setVisibilityFilter(filter);
   };
   return (
-    <div className={styles.footer}>
+    <div className="footer">
       <span>Show:</span>
-      <ul className={styles.filterButton}>
+      <ul className="filterButton">
         <li>
           <button onClick={onClickFilterButton} value="SHOW-ALL">
             All

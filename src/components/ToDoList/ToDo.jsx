@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./ToDoList.module.css";
+import "./ToDoList.css";
 
 const ToDo = props => {
   const deleteTask = event => {
@@ -16,14 +16,8 @@ const ToDo = props => {
         onChange={changedCheckboxHandler}
         id={props.id}
       />
-      <span className={props.checked ? styles.completed : null}>
-        {props.text}
-      </span>
-      <button
-        onClick={deleteTask}
-        id={props.id}
-        className={styles.deleteButton}
-      >
+      <span className={props.checked ? "completed" : null}>{props.text}</span>
+      <button onClick={deleteTask} id={props.id} className="deleteButton">
         x
       </button>
     </div>

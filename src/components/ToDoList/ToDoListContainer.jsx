@@ -5,34 +5,19 @@ import {
   updateTask,
   toogleChecked,
   deleteTask,
-  updateDate
+  updateDate,
+  getVisibleTasks
 } from "../../redux/reducers/todolist-reducer";
 
-const getVisibleTasks = (tasks, filter) => {
-  switch (filter) {
-    case "SHOW-ALL":
-      return tasks;
-    case "SHOW-ACTIVE":
-      return tasks.filter(t => !t.checked);
-    case "SHOW-COMPLETED":
-      return tasks.filter(t => t.checked);
-    default:
-      return tasks;
-  }
-};
-
 const mapStateToProps = state => {
+  debugger;
   return {
-    tasks: getVisibleTasks(
-      state.toDoList.tasks,
-      state.toDoList.visibilityFilter
-    ),
+    tasks: getVisibleTasks(state.toDoList),
     newTaskText: state.toDoList.newTaskText,
     newTaskDate: state.toDoList.newTaskDate
   };
 };
-
-const ToDoListContainer = connect(
+export default connect(
   mapStateToProps,
   {
     toogleChecked,
@@ -42,4 +27,3 @@ const ToDoListContainer = connect(
     updateDate
   }
 )(ToDoList);
-export default ToDoListContainer;

@@ -1,12 +1,18 @@
-.header {
-  grid-area: h;
+.Header {
+  grid-column: 1/5;
+
+  grid-row: 1/2;
+  border: 1px solid red;
+}
+
+.topHeader {
   height: 44px;
   position: relative;
   z-index: 400;
   background-color: #db4c3f;
   padding: 0 20px;
 }
-.header img {
+.topHeader img {
   float: left;
   padding-top: 7px;
   width: 24px;
@@ -14,8 +20,7 @@
   padding: 2px;
 }
 
-h1 {
-  position: absolute;
+.titleHeader h1 {
   top: 30px;
   width: 100%;
   font-size: 100px;

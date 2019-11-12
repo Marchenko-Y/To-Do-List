@@ -1,10 +1,11 @@
-import React from "react";
+import React, { PropTypes } from "react";
 import { DatePickerInput } from "rc-datepicker";
 import "rc-datepicker/lib/style.css";
 
 const Calendar = props => {
-  debugger;
-  //   const date = new Date();
+  let currentDate = new Date();
+  currentDate = currentDate.toISOString().substring(0, 10);
+
   const onChange = newDate => {
     props.updateDate(newDate);
   };
@@ -16,6 +17,7 @@ const Calendar = props => {
         defaultValue={props.newTaskDate}
         className="my-custom-datepicker-component"
         displayFormat="DD/MM/YYYY"
+        minDate={currentDate}
       />
     </div>
   );
