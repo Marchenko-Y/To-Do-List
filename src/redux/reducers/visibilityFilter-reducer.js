@@ -26,7 +26,6 @@ const getTasks = (state1, state2) => state2.tasks;
 export const getVisibleTasks = createSelector(
   [getVisibilityFilter, getTasks],
   (visibilityFilter, tasks) => {
-    debugger;
     switch (visibilityFilter) {
       case "SHOW-ALL":
         return tasks;

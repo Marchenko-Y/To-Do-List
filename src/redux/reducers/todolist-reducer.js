@@ -1,18 +1,22 @@
+import moment from "moment";
 const TOOGLE_CHECKED = "TOOGLE_CHECKED";
 const ADD_TASK = "ADD_TASK";
 const DELETE_TASK = "DELETE_TASK";
 const UPDATE_NEW_TASKS_TEXT = "UPDATE_NEW_TASKS_TEXT";
 const UPDATE_NEW_DATE = "UPDATE_NEW_DATE";
 
-let currentDate = new Date();
-currentDate = currentDate.toISOString().substring(0, 10);
+// let currentDate = new Date();
+// currentDate = currentDate.toISOString().substring(0, 10);
+// alert(currentDate);
+let currentDate = moment().format("YYYY-MM-DD");
 
 const initialState = {
+  todolist: [{ id: 1, nameOfDay: "Today", date: currentDate }],
   tasks: [
     {
       id: 1,
       text: "Learn programming 7 hour every day",
-      date: "2019-11-10",
+      date: currentDate,
       checked: false
     },
     {
@@ -46,7 +50,6 @@ const toDoListReducer = (state = initialState, action) => {
       };
 
     case ADD_TASK:
-      debugger;
       const newTask = {
         id: action.id,
         text: state.newTaskText,

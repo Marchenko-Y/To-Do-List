@@ -1,16 +1,13 @@
 import React from "react";
 import ToDo from "../ToDo";
+import moment from "moment";
 
 const TodayToDoList = props => {
-  let currentDate = new Date();
-  let currentDate1 = currentDate.toISOString().substring(0, 10);
-
-  const locale = "en-us";
-  const month = currentDate.toLocaleString(locale, { month: "short" });
-  const dayOfWeek = currentDate.toLocaleString(locale, { weekday: "short" });
+  let currentDate = moment().format("YYYY-MM-DD");
+  let todayDateInformation = moment().format("ddd. D MMM");
 
   const tasks = props.tasks.map(t => {
-    if (t.date === currentDate1) {
+    if (t.date === currentDate) {
       return (
         <ToDo
           id={t.id}
@@ -26,7 +23,7 @@ const TodayToDoList = props => {
   return (
     <div>
       <span>
-        <strong>Today</strong> {dayOfWeek}. {currentDate.getDate()} {month}
+        <strong>Today</strong> {todayDateInformation}
       </span>
       <div>{tasks}</div>
     </div>

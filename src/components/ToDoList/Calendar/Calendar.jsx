@@ -1,17 +1,20 @@
 import React, { PropTypes } from "react";
 import { DatePickerInput } from "rc-datepicker";
 import "rc-datepicker/lib/style.css";
+import "./Calendar.css";
+
+import moment from "moment";
 
 const Calendar = props => {
-  let currentDate = new Date();
-  currentDate = currentDate.toISOString().substring(0, 10);
+  let currentDate = moment().format("YYYY-MM-DD");
 
   const onChange = newDate => {
+    newDate = moment(newDate, "YYYY-MM-DD").format("YYYY-MM-DD");
     props.updateDate(newDate);
   };
 
   return (
-    <div>
+    <div className="calendar-block">
       <DatePickerInput
         onChange={onChange}
         defaultValue={props.newTaskDate}

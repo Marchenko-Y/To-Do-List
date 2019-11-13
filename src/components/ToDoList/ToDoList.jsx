@@ -5,7 +5,6 @@ import "./ToDoList.css";
 import { Route } from "react-router-dom";
 
 const ToDoList = props => {
-  debugger;
   const addTask = () => {
     props.addTask();
   };
