@@ -1,5 +1,6 @@
 import React from "react";
 import ToDo from "./ToDo";
+import Calendar from "./Calendar/Calendar";
 
 const TodoListComponent = props => {
   const addTask = () => {
@@ -10,23 +11,20 @@ const TodoListComponent = props => {
     props.updateTask(text);
   };
   const tasks = props.tasks.map(t => {
-    if (t.date === props.currentDate1) {
-      return (
-        <ToDo
-          id={t.id}
-          checked={t.checked}
-          text={t.text}
-          toogleChecked={props.toogleChecked}
-          deleteTask={props.deleteTask}
-        />
-      );
-    }
+    return (
+      <ToDo
+        id={t.id}
+        checked={t.checked}
+        text={t.text}
+        toogleChecked={props.toogleChecked}
+        deleteTask={props.deleteTask}
+      />
+    );
   });
   return (
     <div>
       <span>
-        <strong>{props.nameOfDay}</strong> {props.dayOfWeek}.{" "}
-        {currentDate.getDate()} {props.month}
+        <strong>{props.nameOfDay}</strong> "DateInformation"
       </span>
       <div>{tasks}</div>
 
@@ -39,7 +37,7 @@ const TodoListComponent = props => {
         />
       </div>
       <div>
-        <calendarFormat
+        <Calendar
           updateDate={props.updateDate}
           newTaskDate={props.newTaskDate}
         />

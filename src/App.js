@@ -2,8 +2,7 @@ import React from "react";
 import "./App.css";
 import Header from "./components/Header/Header";
 import ToDoListContainer from "./components/ToDoList/ToDoListContainer";
-import FooterContainer from "./components/Footer/FooterContainer";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Route } from "react-router-dom";
 import SideBar from "./components/SideBar/SideBar";
 
 const App = () => {
@@ -12,10 +11,11 @@ const App = () => {
       <div className="app-wrapper">
         <Header />
         <SideBar />
-
-        <ToDoListContainer />
-
-        <FooterContainer />
+        <Route
+          exact
+          path="/todolist/:listName/:statusFilter?"
+          render={() => <ToDoListContainer />}
+        />
       </div>
     </BrowserRouter>
   );

@@ -5,13 +5,10 @@ const DELETE_TASK = "DELETE_TASK";
 const UPDATE_NEW_TASKS_TEXT = "UPDATE_NEW_TASKS_TEXT";
 const UPDATE_NEW_DATE = "UPDATE_NEW_DATE";
 
-// let currentDate = new Date();
-// currentDate = currentDate.toISOString().substring(0, 10);
-// alert(currentDate);
 let currentDate = moment().format("YYYY-MM-DD");
+const tomorrow = "2019-11-18";
 
 const initialState = {
-  todolist: [{ id: 1, nameOfDay: "Today", date: currentDate }],
   tasks: [
     {
       id: 1,
@@ -30,6 +27,24 @@ const initialState = {
       text: "Sleep 8 hours",
       date: currentDate,
       checked: true
+    },
+    {
+      id: 4,
+      text: "Sleep 9 hours",
+      date: tomorrow,
+      checked: false
+    },
+    {
+      id: 5,
+      text: "Go to the park",
+      date: tomorrow,
+      checked: false
+    },
+    {
+      id: 6,
+      text: "To do task home",
+      date: tomorrow,
+      checked: false
     }
   ],
   newTaskText: "",
