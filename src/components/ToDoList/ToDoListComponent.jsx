@@ -1,6 +1,7 @@
 import React from "react";
 import ToDo from "./ToDo";
 import Calendar from "./Calendar/Calendar";
+import format from "date-fns/format";
 
 const TodoListComponent = props => {
   const addTask = () => {
@@ -24,7 +25,8 @@ const TodoListComponent = props => {
   return (
     <div>
       <span>
-        <strong>{props.nameOfDay}</strong> "DateInformation"
+        <strong>{props.nameOfDay}</strong>
+        {format(new Date(props.currentDate), " iii. dd MMM")}
       </span>
       <div>{tasks}</div>
 

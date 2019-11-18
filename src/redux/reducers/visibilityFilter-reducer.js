@@ -1,16 +1,20 @@
 import { createSelector } from "reselect";
-import moment from "moment";
+import format from "date-fns/format";
+import addDays from "date-fns/addDays";
 
 const SET_VISIBILITY_FILTER = "SET_VISIBILITY_FILTER";
 
-const today = moment().format("YYYY-MM-DD");
-const tomorrow = moment("2019-11-18").format("YYYY-MM-DD");
+let today = format(new Date(), "yyyy-MM-dd");
+let addOneDayToCurrentDate = addDays(new Date(), 1);
+let tomorrow = format(new Date(addOneDayToCurrentDate), "yyyy-MM-dd");
 
 const initialState = {
   toDoLists: [
     { id: 1, nameOfDay: "Today", date: today },
-    { id: 2, nameOfDay: "Tommorow", date: tomorrow }
-  ]
+    { id: 2, nameOfDay: "Tomorrow", date: tomorrow },
+    { id: 3, nameOfDay: "Recent", date: null }
+  ],
+  currentToDoList: null
 };
 
 const visibilityFilterReducer = (state = initialState, action) => {
@@ -29,11 +33,9 @@ const getTasks = state => {
   return state.toDoList.tasks;
 };
 const getVisibilityFilter = (state, matcher) => {
-  debugger;
   return matcher.listName;
 };
 const getVisibilityStatusFilter = (state, matcher) => {
-  debugger;
   return matcher.statusFilter;
 };
 export const getVisibleTasks = createSelector(
@@ -46,7 +48,6 @@ export const getVisibleTasks = createSelector(
         });
       case "SHOW-TOMORROW-TASK":
         return tasks.filter(t => {
-          debugger;
           return t.date === tomorrow;
         });
       default:
@@ -62,7 +63,6 @@ export const getTasksWithFilter = createSelector(
       case "SHOW-ALL":
         return tasks;
       case "SHOW-ACTIVE":
-        debugger;
         return tasks.filter(t => !t.checked);
       case "SHOW-COMPLETED":
         return tasks.filter(t => t.checked);

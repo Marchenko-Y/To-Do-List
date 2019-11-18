@@ -1,15 +1,14 @@
-import React, { PropTypes } from "react";
+import React from "react";
 import { DatePickerInput } from "rc-datepicker";
 import "rc-datepicker/lib/style.css";
 import "./Calendar.css";
-
-import moment from "moment";
+import format from "date-fns/format";
 
 const Calendar = props => {
-  let currentDate = moment().format("YYYY-MM-DD");
+  let currentDate = format(new Date(), "yyyy-MM-dd");
 
   const onChange = newDate => {
-    newDate = moment(newDate, "YYYY-MM-DD").format("YYYY-MM-DD");
+    newDate = format(new Date(newDate), "yyyy-MM-dd");
     props.updateDate(newDate);
   };
 

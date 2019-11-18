@@ -12,7 +12,6 @@ const App = () => {
         <Header />
         <SideBar />
         <Route
-          exact
           path="/todolist/:listName/:statusFilter?"
           render={() => <ToDoListContainer />}
         />

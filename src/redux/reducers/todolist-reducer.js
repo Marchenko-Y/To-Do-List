@@ -1,12 +1,15 @@
-import moment from "moment";
+import format from "date-fns/format";
+import addDays from "date-fns/addDays";
+
 const TOOGLE_CHECKED = "TOOGLE_CHECKED";
 const ADD_TASK = "ADD_TASK";
 const DELETE_TASK = "DELETE_TASK";
 const UPDATE_NEW_TASKS_TEXT = "UPDATE_NEW_TASKS_TEXT";
 const UPDATE_NEW_DATE = "UPDATE_NEW_DATE";
 
-let currentDate = moment().format("YYYY-MM-DD");
-const tomorrow = "2019-11-18";
+let currentDate = format(new Date(), "yyyy-MM-dd");
+let addOneDayToCurrentDate = addDays(new Date(), 1);
+let tomorrow = format(new Date(addOneDayToCurrentDate), "yyyy-MM-dd");
 
 const initialState = {
   tasks: [

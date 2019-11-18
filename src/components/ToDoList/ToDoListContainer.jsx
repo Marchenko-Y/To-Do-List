@@ -11,11 +11,23 @@ import { getTasksWithFilter } from "../../redux/reducers/visibilityFilter-reduce
 import { withRouter } from "react-router-dom";
 
 const mapStateToProps = (state, props) => {
+  const listName = props.match.params.listName;
+  const getToDoListInformation = listName => {
+    switch (listName) {
+      case "SHOW-TODAY-TASK":
+        return state.visibilityFilter.toDoLists[0];
+      case "SHOW-TOMORROW-TASK":
+        return state.visibilityFilter.toDoLists[1];
+      default:
+        return state.visibilityFilter.toDoLists[2];
+    }
+  };
+
   return {
     tasks: getTasksWithFilter(state, props.match.params),
     newTaskText: state.toDoList.newTaskText,
     newTaskDate: state.toDoList.newTaskDate,
-    toDoListInformation: state.visibilityFilter.toDoLists,
+    toDoListInformation: getToDoListInformation(listName),
     listName: props.match.params.listName
   };
 };

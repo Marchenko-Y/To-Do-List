@@ -2,10 +2,12 @@ import {
   getVisibleTasks,
   getTasksWithFilter
 } from "./visibilityFilter-reducer";
-import moment from "moment";
+import format from "date-fns/format";
+import addDays from "date-fns/addDays";
 
-let currentDate = moment().format("YYYY-MM-DD");
-const tomorrow = moment("2019-11-17").format("YYYY-MM-DD");
+let currentDate = format(new Date(), "yyyy-MM-dd");
+let addOneDayToCurrentDate = addDays(new Date(), 1);
+let tomorrow = format(new Date(addOneDayToCurrentDate), "yyyy-MM-dd");
 
 const tasks = [
   {
