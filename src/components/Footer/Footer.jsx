@@ -3,7 +3,6 @@ import "./Footer.css";
 import { NavLink } from "react-router-dom";
 
 const Footer = props => {
-  debugger;
   return (
     <div className="footer">
       <span>Show:</span>

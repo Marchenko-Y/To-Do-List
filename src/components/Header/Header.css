@@ -17,9 +17,11 @@
   padding-top: 7px;
   width: 24px;
   height: 24px;
+}
+.topHeader .logo {
+  margin-left: 100px;
   padding: 2px;
 }
-
 .titleHeader h1 {
   top: 30px;
   width: 100%;

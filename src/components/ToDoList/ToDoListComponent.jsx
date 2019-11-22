@@ -1,5 +1,5 @@
 import React from "react";
-import ToDo from "./ToDo";
+import ToDo from "./ToDo/ToDo";
 import Calendar from "./Calendar/Calendar";
 import format from "date-fns/format";
 
@@ -11,14 +11,19 @@ const TodoListComponent = props => {
     const text = event.target.value;
     props.updateTask(text);
   };
+
   const tasks = props.tasks.map(t => {
     return (
       <ToDo
         id={t.id}
         checked={t.checked}
+        editMode={t.editMode}
         text={t.text}
         toogleChecked={props.toogleChecked}
+        toogleEditMode={props.toogleEditMode}
         deleteTask={props.deleteTask}
+        saveEditedTask={props.saveEditedTask}
+        updateEditedTaskText={props.updateEditedTaskText}
       />
     );
   });
