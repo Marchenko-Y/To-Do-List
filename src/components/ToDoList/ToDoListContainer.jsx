@@ -7,8 +7,7 @@ import {
   deleteTask,
   updateDate,
   toogleEditMode,
-  saveEditedTask,
-  updateEditedTaskText
+  saveEditedTask
 } from "../../redux/reducers/todolist-reducer";
 import { getTasksWithFilter } from "../../redux/reducers/visibilityFilter-reducer";
 import { withRouter } from "react-router-dom";
@@ -42,7 +41,6 @@ const ToDoListContainer = connect(mapStateToProps, {
   deleteTask,
   updateDate,
   toogleEditMode,
-  saveEditedTask,
-  updateEditedTaskText
+  saveEditedTask
 })(ToDoList);
 export default withRouter(ToDoListContainer);

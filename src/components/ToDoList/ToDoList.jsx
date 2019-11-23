@@ -1,6 +1,6 @@
 import React from "react";
 import "./ToDoList.css";
-import TodoListComponent from "./ToDoListComponent";
+import TodoListComponent from "./SectionDay";
 import Footer from "../Footer/Footer";
 
 const ToDoList = props => {

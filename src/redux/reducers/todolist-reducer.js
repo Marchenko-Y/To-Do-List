@@ -21,48 +21,42 @@ const initialState = {
       text: "Learn programming 7 hour every day",
       date: currentDate,
       checked: false,
-      editMode: false,
-      editedTaskText: ""
+      editMode: false
     },
     {
       id: 2,
       text: "Smile",
       date: currentDate,
       checked: false,
-      editMode: false,
-      editedTaskText: ""
+      editMode: false
     },
     {
       id: 3,
       text: "Sleep 8 hours",
       date: currentDate,
       checked: true,
-      editMode: false,
-      editedTaskText: ""
+      editMode: false
     },
     {
       id: 4,
       text: "Sleep 9 hours",
       date: tomorrow,
       checked: false,
-      editMode: false,
-      editedTaskText: ""
+      editMode: false
     },
     {
       id: 5,
       text: "Go to the park",
       date: tomorrow,
       checked: false,
-      editMode: false,
-      editedTaskText: ""
+      editMode: false
     },
     {
       id: 6,
       text: "To do task home",
       date: tomorrow,
       checked: false,
-      editMode: false,
-      editedTaskText: ""
+      editMode: false
     }
   ],
   newTaskText: "",
@@ -117,18 +111,6 @@ const toDoListReducer = (state = initialState, action) => {
         ...state,
         newTaskText: action.newTask
       };
-    case UPDATE_EDITED_TASKS_TEXT:
-      debugger;
-      return {
-        ...state,
-        tasks: state.tasks.map(t => {
-          if (t.id == action.taskId) {
-            debugger;
-            return { ...t, editedTaskText: action.editedTaskText };
-          }
-          return t;
-        })
-      };
     case UPDATE_NEW_DATE:
       return {
         ...state,
@@ -167,9 +149,6 @@ export const deleteTask = taskId => {
 };
 export const updateTask = text => {
   return { type: UPDATE_NEW_TASKS_TEXT, newTask: text };
-};
-export const updateEditedTaskText = (text, taskId) => {
-  return { type: UPDATE_EDITED_TASKS_TEXT, editedTaskText: text, taskId };
 };
 export const updateDate = date => {
   return { type: UPDATE_NEW_DATE, newDate: date };
