@@ -4,6 +4,7 @@ import addDays from "date-fns/addDays";
 
 const SHOW_TODAY_TASK = "SHOW-TODAY-TASK";
 const SHOW_TOMORROW_TASK = "SHOW-TOMORROW-TASK";
+const SHOW_RECENT_TASK = "SHOW-RECENT-TASK";
 const SHOW_ALL = "SHOW-ALL";
 const SHOW_ACTIVE = "SHOW-ACTIVE";
 const SHOW_COMPLETED = "SHOW-COMPLETED";
@@ -17,8 +18,7 @@ const initialState = {
     { id: 1, nameOfDay: "Today", date: today },
     { id: 2, nameOfDay: "Tomorrow", date: tomorrow },
     { id: 3, nameOfDay: "Recent", date: null }
-  ],
-  currentToDoList: null
+  ]
 };
 
 const visibilityFilterReducer = (state = initialState, action) => {
@@ -53,6 +53,10 @@ export const getVisibleTasks = createSelector(
       case SHOW_TOMORROW_TASK:
         return tasks.filter(t => {
           return t.date === tomorrow;
+        });
+      case SHOW_RECENT_TASK:
+        return tasks.filter(t => {
+          return t.date !== today && t.date !== tomorrow;
         });
       default:
         return tasks;

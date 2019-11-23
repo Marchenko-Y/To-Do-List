@@ -8,7 +8,6 @@ const DELETE_TASK = "DELETE_TASK";
 const UPDATE_NEW_TASKS_TEXT = "UPDATE_NEW_TASKS_TEXT";
 const UPDATE_NEW_DATE = "UPDATE_NEW_DATE";
 const SAVE_EDITED_TASK = "SAVE_EDITED_TASK";
-const UPDATE_EDITED_TASKS_TEXT = "UPDATE_EDITED_TASKS_TEXT";
 
 let currentDate = format(new Date(), "yyyy-MM-dd");
 let addOneDayToCurrentDate = addDays(new Date(), 1);
@@ -97,7 +96,6 @@ const toDoListReducer = (state = initialState, action) => {
       return {
         ...state,
         newTaskText: "",
-        newTaskDate: currentDate,
         tasks: [...state.tasks, newTask]
       };
 

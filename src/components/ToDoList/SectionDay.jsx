@@ -44,12 +44,16 @@ class TodoListComponent extends React.Component {
         />
       );
     });
+    const totalTasks = tasks.length;
 
     return (
       <div>
         <span>
           <strong>{this.props.nameOfDay}</strong>
-          {format(new Date(this.props.currentDate), " iii. dd MMM")}
+
+          {this.props.currentDate
+            ? format(new Date(this.props.currentDate), " iii. dd MMM")
+            : ""}
         </span>
 
         <div>{tasks}</div>
@@ -74,6 +78,7 @@ class TodoListComponent extends React.Component {
               <Calendar
                 updateDate={this.props.updateDate}
                 newTaskDate={this.props.newTaskDate}
+                currentDate={this.props.currentDate}
               />
             </div>
             <div>
@@ -84,6 +89,8 @@ class TodoListComponent extends React.Component {
             </div>
           </>
         )}
+
+        <span>Total tasks : {totalTasks}</span>
       </div>
     );
   }

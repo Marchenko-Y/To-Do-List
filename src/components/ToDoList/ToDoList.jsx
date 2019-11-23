@@ -1,13 +1,13 @@
 import React from "react";
 import "./ToDoList.css";
-import TodoListComponent from "./SectionDay";
+import SectionDay from "./SectionDay";
 import Footer from "../Footer/Footer";
 
 const ToDoList = props => {
   return (
     <div className="main grid_item">
       <div className="section-day">
-        <TodoListComponent
+        <SectionDay
           addTask={props.addTask}
           updateTask={props.updateTask}
           currentDate={props.toDoListInformation.date}

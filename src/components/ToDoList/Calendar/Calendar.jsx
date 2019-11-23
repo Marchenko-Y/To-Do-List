@@ -5,7 +5,7 @@ import "./Calendar.css";
 import format from "date-fns/format";
 
 const Calendar = props => {
-  let currentDate = format(new Date(), "yyyy-MM-dd");
+  let today = format(new Date(), "yyyy-MM-dd");
 
   const onChange = newDate => {
     newDate = format(new Date(newDate), "yyyy-MM-dd");
@@ -16,10 +16,10 @@ const Calendar = props => {
     <div className="calendar-block">
       <DatePickerInput
         onChange={onChange}
-        defaultValue={props.newTaskDate}
+        defaultValue={props.currentDate ? props.currentDate : today}
         className="my-custom-datepicker-component"
         displayFormat="DD/MM/YYYY"
-        minDate={currentDate}
+        minDate={today}
       />
     </div>
   );
