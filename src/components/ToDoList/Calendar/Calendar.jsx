@@ -20,6 +20,7 @@ const Calendar = props => {
         className="my-custom-datepicker-component"
         displayFormat="DD/MM/YYYY"
         minDate={today}
+        closeOnClickOutside="true"
       />
     </div>
   );
