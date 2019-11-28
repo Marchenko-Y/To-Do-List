@@ -80,7 +80,7 @@ const toDoListReducer = (state = initialState, action) => {
           if (t.id == action.taskId) {
             return { ...t, editMode: !t.editMode };
           }
-          return t;
+          return { ...t, editMode: false };
         })
       };
 

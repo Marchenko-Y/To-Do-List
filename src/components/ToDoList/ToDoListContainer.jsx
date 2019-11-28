@@ -27,7 +27,6 @@ const mapStateToProps = (state, props) => {
 
   return {
     tasks: getTasksWithFilter(state, props.match.params),
-    newTaskDate: state.toDoList.newTaskDate,
     toDoListInformation: getToDoListInformation(listName),
     listName: props.match.params.listName
   };

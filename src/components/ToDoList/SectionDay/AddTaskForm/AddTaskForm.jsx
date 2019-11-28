@@ -1,6 +1,7 @@
 import React from "react";
-import Calendar from "../Calendar/Calendar";
+import Calendar from "../../Calendar/Calendar";
 import { reduxForm, Field } from "redux-form";
+import { Input } from "./FormsConrols";
 
 class AddTaskForm extends React.Component {
   constructor(props) {
@@ -36,7 +37,7 @@ class AddTaskForm extends React.Component {
             <div>
               <Field
                 name="newTaskText"
-                component="input"
+                component={Input}
                 placeholder="Введите сообщение"
                 type="text"
               />
@@ -44,7 +45,6 @@ class AddTaskForm extends React.Component {
             <div>
               <Calendar
                 updateDate={this.props.updateDate}
-                newTaskDate={this.props.newTaskDate}
                 currentDate={this.props.currentDate}
               />
             </div>
@@ -59,5 +59,7 @@ class AddTaskForm extends React.Component {
   }
 }
 
-const AddTaskReduxForm = reduxForm({ form: "addTaskForm" })(AddTaskForm);
+const AddTaskReduxForm = reduxForm({
+  form: "addTaskForm"
+})(AddTaskForm);
 export default AddTaskReduxForm;

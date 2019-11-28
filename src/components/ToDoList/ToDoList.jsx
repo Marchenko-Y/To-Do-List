@@ -14,7 +14,6 @@ const ToDoList = props => {
           toogleEditMode={props.toogleEditMode}
           deleteTask={props.deleteTask}
           updateDate={props.updateDate}
-          newTaskDate={props.newTaskDate}
           nameOfDay={props.toDoListInformation.nameOfDay}
           tasks={props.tasks}
           saveEditedTask={props.saveEditedTask}

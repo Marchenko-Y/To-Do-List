@@ -1,7 +1,8 @@
 import React from "react";
 import ToDo from "../Todo/ToDo";
 import format from "date-fns/format";
-import AddTaskForm from "./AddTaskForm";
+import AddTaskForm from "./AddTaskForm/AddTaskForm";
+import { SubmissionError } from "redux-form";
 
 const TodoListComponent = props => {
   const tasks = props.tasks.map(t => {
@@ -22,8 +23,15 @@ const TodoListComponent = props => {
   const totalTasks = tasks.length;
 
   const addNewTask = values => {
-    props.addTask(values.newTaskText);
-    props.reset("addTaskForm");
+    if (!values.newTaskText) {
+      throw new SubmissionError({
+        newTaskText: "Fill this field",
+        _error: "failed!"
+      });
+    } else {
+      props.addTask(values.newTaskText);
+      props.reset("addTaskForm");
+    }
   };
 
   return (
@@ -40,7 +48,6 @@ const TodoListComponent = props => {
       <AddTaskForm
         onSubmit={addNewTask}
         updateDate={props.updateDate}
-        newTaskDate={props.newTaskDate}
         currentDate={props.currentDate}
       />
 
