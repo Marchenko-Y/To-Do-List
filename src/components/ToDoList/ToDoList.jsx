@@ -9,18 +9,17 @@ const ToDoList = props => {
       <div className="section-day">
         <SectionDay
           addTask={props.addTask}
-          updateTask={props.updateTask}
           currentDate={props.toDoListInformation.date}
           toogleChecked={props.toogleChecked}
           toogleEditMode={props.toogleEditMode}
           deleteTask={props.deleteTask}
-          newTaskText={props.newTaskText}
           updateDate={props.updateDate}
           newTaskDate={props.newTaskDate}
           nameOfDay={props.toDoListInformation.nameOfDay}
           tasks={props.tasks}
           saveEditedTask={props.saveEditedTask}
           updateEditedTaskText={props.updateEditedTaskText}
+          reset={props.reset}
         />
       </div>
 

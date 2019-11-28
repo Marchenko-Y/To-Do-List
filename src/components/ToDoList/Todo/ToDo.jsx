@@ -63,11 +63,7 @@ class ToDo extends React.Component {
               value={this.state.inputValue}
             />
             <div>
-              <button
-                onClick={this.saveEditedTask}
-                className="addButton"
-                id={this.props.id}
-              >
+              <button onClick={this.saveEditedTask} className="addButton">
                 Save
               </button>
             </div>

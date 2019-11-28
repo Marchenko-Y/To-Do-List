@@ -1,7 +1,7 @@
 import React from "react";
-import ToDo from "./ToDo";
+import ToDo from "../Todo/ToDo";
 import format from "date-fns/format";
-import AddTaskForm from "./AddTaskForm";
+import AddTaskForm from "./AddTaskForm-copy";
 
 const TodoListComponent = props => {
   const tasks = props.tasks.map(t => {
@@ -21,6 +21,12 @@ const TodoListComponent = props => {
   });
   const totalTasks = tasks.length;
 
+  const addNewTask = values => {
+    debugger;
+    props.addTask(values.newTaskText);
+    props.reset("addTaskForm");
+  };
+
   return (
     <div>
       <span>
@@ -33,12 +39,10 @@ const TodoListComponent = props => {
 
       <div>{tasks}</div>
       <AddTaskForm
-        newTaskText={props.newTaskText}
+        onSubmit={addNewTask}
         updateDate={props.updateDate}
         newTaskDate={props.newTaskDate}
         currentDate={props.currentDate}
-        addTask={props.addTask}
-        updateTask={props.updateTask}
       />
 
       <span>Total tasks : {totalTasks}</span>
