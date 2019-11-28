@@ -1,5 +1,6 @@
 import React from "react";
 import Calendar from "../Calendar/Calendar";
+import { reduxForm, Field } from "redux-form";
 
 class AddTaskForm extends React.Component {
   constructor(props) {
@@ -8,6 +9,7 @@ class AddTaskForm extends React.Component {
       addMode: false
     };
   }
+
   activatedAddMode = () => {
     this.setState({
       addMode: true
@@ -20,14 +22,9 @@ class AddTaskForm extends React.Component {
     });
   };
 
-  onTaskChange = event => {
-    const text = event.target.value;
-    this.props.updateTask(text);
-  };
-
   render() {
     return (
-      <>
+      <form onSubmit={this.props.handleSubmit}>
         {!this.state.addMode && (
           <div>
             + <button onClick={this.activatedAddMode}>Add task</button>
@@ -37,11 +34,11 @@ class AddTaskForm extends React.Component {
         {this.state.addMode && (
           <>
             <div>
-              <input
-                type="text"
+              <Field
+                name="newTaskText"
+                component="input"
                 placeholder="Введите сообщение"
-                onChange={this.onTaskChange}
-                value={this.props.newTaskText}
+                type="text"
               />
             </div>
             <div>
@@ -52,16 +49,15 @@ class AddTaskForm extends React.Component {
               />
             </div>
             <div>
-              <button className="addButton" onClick={this.props.addTask}>
-                Add task
-              </button>
+              <button className="addButton">Add task</button>
               <button onClick={this.deactivatedAddMode}>Cancel</button>
             </div>
           </>
         )}
-      </>
+      </form>
     );
   }
 }
 
-export default AddTaskForm;
+const AddTaskReduxForm = reduxForm({ form: "addTaskForm" })(AddTaskForm);
+export default AddTaskReduxForm;

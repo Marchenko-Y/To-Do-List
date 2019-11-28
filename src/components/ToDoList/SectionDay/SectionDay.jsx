@@ -1,7 +1,7 @@
 import React from "react";
 import ToDo from "../Todo/ToDo";
 import format from "date-fns/format";
-import AddTaskForm from "./AddTaskForm-copy";
+import AddTaskForm from "./AddTaskForm";
 
 const TodoListComponent = props => {
   const tasks = props.tasks.map(t => {
@@ -22,7 +22,6 @@ const TodoListComponent = props => {
   const totalTasks = tasks.length;
 
   const addNewTask = values => {
-    debugger;
     props.addTask(values.newTaskText);
     props.reset("addTaskForm");
   };
