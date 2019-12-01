@@ -43,3 +43,9 @@ button.deleteButton:hover {
 .section-day div {
   margin-bottom: 10px;
 }
+
+span.dateOfRecentTasks {
+  font-size: 10px;
+  color: green;
+  font-weight: bold;
+}

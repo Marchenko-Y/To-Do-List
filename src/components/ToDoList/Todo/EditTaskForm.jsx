@@ -14,6 +14,7 @@ class EditModeForm extends React.Component {
           autoFocus="true"
           type="text"
         />
+
         <div>
           <button className="addButton">Save</button>
         </div>

@@ -2,7 +2,6 @@ import React from "react";
 import "./AddTaskForm.css";
 
 export const Input = ({ input, meta, ...props }) => {
-  debugger;
   return (
     <div className={`formControl ${meta.error && meta.touched ? "error" : ""}`}>
       <input {...input} {...props} />

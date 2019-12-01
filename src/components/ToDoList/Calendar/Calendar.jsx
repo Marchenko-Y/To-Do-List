@@ -4,19 +4,14 @@ import "rc-datepicker/lib/style.css";
 import "./Calendar.css";
 import format from "date-fns/format";
 
-const Calendar = props => {
+const renderDataField = ({ input, currentDate, meta: { touched, error } }) => {
   let today = format(new Date(), "yyyy-MM-dd");
-
-  const onChange = newDate => {
-    newDate = format(new Date(newDate), "yyyy-MM-dd");
-    props.updateDate(newDate);
-  };
-
   return (
     <div className="calendar-block">
       <DatePickerInput
-        onChange={onChange}
-        defaultValue={props.currentDate ? props.currentDate : today}
+        {...input}
+        onChange={(event, value) => input.onChange(value)}
+        defaultValue={currentDate ? currentDate : today}
         className="my-custom-datepicker-component"
         displayFormat="DD/MM/YYYY"
         minDate={today}
@@ -25,4 +20,4 @@ const Calendar = props => {
     </div>
   );
 };
-export default Calendar;
+export default renderDataField;

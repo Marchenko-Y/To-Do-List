@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@reduxjs/toolkit": "^1.0.4",
     "date-fns": "^2.7.0",
     "rc-datepicker": "^5.0.14",
     "react": "^16.10.2",

@@ -16,21 +16,29 @@ const TodoListComponent = props => {
         toogleEditMode={props.toogleEditMode}
         deleteTask={props.deleteTask}
         saveEditedTask={props.saveEditedTask}
-        updateEditedTaskText={props.updateEditedTaskText}
+        date={t.date}
+        nameOfDay={props.nameOfDay}
       />
     );
   });
   const totalTasks = tasks.length;
 
   const addNewTask = values => {
+    debugger;
     if (!values.newTaskText) {
       throw new SubmissionError({
         newTaskText: "Fill this field",
         _error: "failed!"
       });
+    } else if (!values.date) {
+      const date = format(new Date(props.currentDate), "yyyy-MM-dd");
+      props.addTask(values.newTaskText, date);
+      props.change("addTaskForm", "newTaskText", "");
     } else {
-      props.addTask(values.newTaskText);
-      props.reset("addTaskForm");
+      debugger;
+      const date = format(new Date(values.date), "yyyy-MM-dd");
+      props.addTask(values.newTaskText, date);
+      props.change("addTaskForm", "newTaskText", "");
     }
   };
 
@@ -39,17 +47,13 @@ const TodoListComponent = props => {
       <span>
         <strong>{props.nameOfDay}</strong>
 
-        {props.currentDate
-          ? format(new Date(props.currentDate), " iii. dd MMM")
-          : ""}
+        {props.nameOfDay === "Recent"
+          ? ""
+          : format(new Date(props.currentDate), " iii. dd MMM")}
       </span>
 
       <div>{tasks}</div>
-      <AddTaskForm
-        onSubmit={addNewTask}
-        updateDate={props.updateDate}
-        currentDate={props.currentDate}
-      />
+      <AddTaskForm onSubmit={addNewTask} currentDate={props.currentDate} />
 
       <span>Total tasks : {totalTasks}</span>
     </div>

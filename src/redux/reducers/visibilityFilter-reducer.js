@@ -17,7 +17,7 @@ const initialState = {
   toDoLists: [
     { id: 1, nameOfDay: "Today", date: today },
     { id: 2, nameOfDay: "Tomorrow", date: tomorrow },
-    { id: 3, nameOfDay: "Recent", date: null }
+    { id: 3, nameOfDay: "Recent", date: today }
   ]
 };
 

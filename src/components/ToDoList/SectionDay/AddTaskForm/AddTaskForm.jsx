@@ -1,5 +1,5 @@
 import React from "react";
-import Calendar from "../../Calendar/Calendar";
+import renderDataField from "../../Calendar/Calendar";
 import { reduxForm, Field } from "redux-form";
 import { Input } from "./FormsConrols";
 
@@ -43,8 +43,9 @@ class AddTaskForm extends React.Component {
               />
             </div>
             <div>
-              <Calendar
-                updateDate={this.props.updateDate}
+              <Field
+                name="date"
+                component={renderDataField}
                 currentDate={this.props.currentDate}
               />
             </div>

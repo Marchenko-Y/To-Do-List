@@ -5,7 +5,6 @@ const TOOGLE_CHECKED = "TOOGLE_CHECKED";
 const TOOGLE_EDIT_MODE = "TOOGLE_EDIT_MODE";
 const ADD_TASK = "ADD_TASK";
 const DELETE_TASK = "DELETE_TASK";
-const UPDATE_NEW_DATE = "UPDATE_NEW_DATE";
 const SAVE_EDITED_TASK = "SAVE_EDITED_TASK";
 
 let currentDate = format(new Date(), "yyyy-MM-dd");
@@ -56,9 +55,7 @@ const initialState = {
       checked: false,
       editMode: false
     }
-  ],
-
-  newTaskDate: currentDate
+  ]
 };
 
 const toDoListReducer = (state = initialState, action) => {
@@ -88,10 +85,9 @@ const toDoListReducer = (state = initialState, action) => {
       const newTask = {
         id: action.id,
         text: action.newTaskText,
-        date: state.newTaskDate,
+        date: action.date,
         checked: false
       };
-
       return {
         ...state,
         newTaskText: "",
@@ -104,11 +100,6 @@ const toDoListReducer = (state = initialState, action) => {
         tasks: state.tasks.filter(t => t.id != action.taskId)
       };
 
-    case UPDATE_NEW_DATE:
-      return {
-        ...state,
-        newTaskDate: action.newDate
-      };
     case SAVE_EDITED_TASK:
       debugger;
       return {
@@ -134,16 +125,13 @@ export const toogleChecked = taskId => {
 export const toogleEditMode = taskId => {
   return { type: TOOGLE_EDIT_MODE, taskId };
 };
-export const addTask = newTaskText => {
-  return { type: ADD_TASK, id: nextTodoId++, newTaskText };
+export const addTask = (newTaskText, date) => {
+  return { type: ADD_TASK, id: nextTodoId++, newTaskText, date };
 };
 export const deleteTask = taskId => {
   return { type: DELETE_TASK, taskId };
 };
 
-export const updateDate = date => {
-  return { type: UPDATE_NEW_DATE, newDate: date };
-};
 export const saveEditedTask = (editedText, taskId) => {
   return { type: SAVE_EDITED_TASK, editedText, taskId };
 };

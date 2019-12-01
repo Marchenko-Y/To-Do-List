@@ -1,6 +1,7 @@
 import React from "react";
 import "../ToDoList.css";
 import EditModeReduxForm from "./EditTaskForm";
+import format from "date-fns/format";
 
 const ToDo = props => {
   const deleteTask = () => {
@@ -35,6 +36,12 @@ const ToDo = props => {
             className={props.checked ? "completed" : null}
           >
             {props.text}
+
+            {props.nameOfDay === "Recent" && (
+              <span className="dateOfRecentTasks">
+                {format(new Date(props.date), " dd MMM")}
+              </span>
+            )}
           </span>
           <button onClick={deleteTask} className="deleteButton">
             x
