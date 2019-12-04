@@ -4,12 +4,10 @@ import SectionDay from "./SectionDay/SectionDay";
 import Footer from "../Footer/Footer";
 
 const ToDoList = props => {
-  debugger;
   return (
     <div className="main grid_item">
       <div className="section-day">
         <SectionDay
-          addTask={props.addTask}
           currentDate={props.toDoListInformation.date}
           toogleChecked={props.toogleChecked}
           toogleEditMode={props.toogleEditMode}
@@ -17,7 +15,7 @@ const ToDoList = props => {
           nameOfDay={props.toDoListInformation.nameOfDay}
           tasks={props.tasks}
           saveEditedTask={props.saveEditedTask}
-          change={props.change}
+          addTask={props.addTaskThunk}
         />
       </div>
 

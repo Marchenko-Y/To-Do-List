@@ -2,6 +2,8 @@ import React from "react";
 import renderDataField from "../../Calendar/Calendar";
 import { reduxForm, Field } from "redux-form";
 import { Input } from "./FormsConrols";
+import Modal from "../../../ModalWindow/ModalWindow";
+import format from "date-fns/format";
 
 class AddTaskForm extends React.Component {
   constructor(props) {
@@ -31,7 +33,6 @@ class AddTaskForm extends React.Component {
             + <button onClick={this.activatedAddMode}>Add task</button>
           </div>
         )}
-
         {this.state.addMode && (
           <>
             <div>
@@ -55,6 +56,13 @@ class AddTaskForm extends React.Component {
             </div>
           </>
         )}
+        <Modal showModal={this.props.showModalWindow}>
+          <div>
+            {" "}
+            Task add to
+            {format(new Date(this.props.dateNewTask), "  dd MMM(iiii)")}
+          </div>
+        </Modal>
       </form>
     );
   }

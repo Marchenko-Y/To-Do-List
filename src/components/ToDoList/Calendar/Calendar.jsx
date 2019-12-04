@@ -11,7 +11,7 @@ const renderDataField = ({ input, currentDate, meta: { touched, error } }) => {
       <DatePickerInput
         {...input}
         onChange={(event, value) => input.onChange(value)}
-        defaultValue={currentDate ? currentDate : today}
+        value={currentDate ? currentDate : today}
         className="my-custom-datepicker-component"
         displayFormat="DD/MM/YYYY"
         minDate={today}
