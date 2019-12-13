@@ -1,0 +1,28 @@
+.main {
+  background: #fff;
+  margin-left: 110px;
+  grid-area: content;
+  margin-top: 45px;
+  min-height: calc(100vh);
+}
+
+.section_day {
+  width: 100%;
+  max-width: 700px;
+  vertical-align: top;
+  padding-left: 44px;
+  padding-right: 14px;
+  padding-top: 34px;
+  padding-bottom: 84px;
+}
+
+.addButton {
+  background: 0;
+  background-color: #db4c3f;
+  color: #fff;
+  text-shadow: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+  font-size: 12px;
+  border-radius: 3px;
+}

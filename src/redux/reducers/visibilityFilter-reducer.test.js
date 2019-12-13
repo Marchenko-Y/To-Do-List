@@ -47,6 +47,7 @@ const tasks = [
     checked: false
   }
 ];
+
 describe("visibleFilter", () => {
   describe("getVisibleTasks", () => {
     it("filtering of type SHOW-TODAY-TASK", () => {

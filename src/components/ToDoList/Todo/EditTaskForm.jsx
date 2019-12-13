@@ -1,5 +1,6 @@
 import React from "react";
 import { reduxForm, Field } from "redux-form";
+import styles from "./ToDo.module.css";
 
 class EditModeForm extends React.Component {
   componentDidMount() {
@@ -7,7 +8,10 @@ class EditModeForm extends React.Component {
   }
   render() {
     return (
-      <form onSubmit={this.props.handleSubmit}>
+      <form
+        className={styles.edit_task_form}
+        onSubmit={this.props.handleSubmit}
+      >
         <Field
           name="taskEditText"
           component="input"
@@ -16,7 +20,7 @@ class EditModeForm extends React.Component {
         />
 
         <div>
-          <button className="addButton">Save</button>
+          <button className={styles.addButton}>Save</button>
         </div>
       </form>
     );

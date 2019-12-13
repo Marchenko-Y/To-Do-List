@@ -9,6 +9,7 @@ import {
 } from "../../redux/reducers/todolist-reducer";
 import { getTasksWithFilter } from "../../redux/reducers/visibilityFilter-reselect";
 import { withRouter } from "react-router-dom";
+import { compose } from "redux";
 
 const mapStateToProps = (state, props) => {
   const listName = props.match.params.listName;
@@ -30,11 +31,13 @@ const mapStateToProps = (state, props) => {
   };
 };
 
-const ToDoListContainer = connect(mapStateToProps, {
-  toogleChecked,
-  deleteTask,
-  toogleEditMode,
-  saveEditedTask,
-  addTaskThunk
-})(ToDoList);
-export default withRouter(ToDoListContainer);
+export default compose(
+  withRouter,
+  connect(mapStateToProps, {
+    toogleChecked,
+    deleteTask,
+    toogleEditMode,
+    saveEditedTask,
+    addTaskThunk
+  })
+)(ToDoList);

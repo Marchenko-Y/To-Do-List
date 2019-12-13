@@ -1,43 +1,48 @@
 .left_menu {
-  grid-column: 1/2;
-  grid-row: 2/4;
+  grid-area: sidebar;
   border-right: 1px solid #f1f1f1;
-  padding-left: 42px;
-  margin-left: 0;
+  height: calc(100vh - 50px);
+  padding-top: 74px;
+  padding-left: 32px;
 }
 
-.left_menu_filters {
+.left_menu__filters {
   margin: 0;
   padding: 0;
-  width: 265px;
-  padding-bottom: 30px;
 }
 
-.left_menu_filters li {
-  min-height: 24px;
+.left_menu__filters li {
   font-size: 14px;
-  color: #333;
   list-style: none;
   cursor: pointer;
   padding: 5px 16px 5px 5px;
   -webkit-transition: color 0.1s ease-in, background-color 0.1s ease-in;
   transition: color 0.1s ease-in, background-color 0.1s ease-in;
   line-height: 1.25;
+}
+
+.left_menu__filters li a {
+  display: inline-block;
+  width: 207px;
+  vertical-align: top;
+  min-height: 24px;
+  line-height: 24px;
+  word-break: break-all;
+  text-decoration: none;
+  color: #333;
+  border-radius: 3px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  border-radius: 3px;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
 }
-.left_menu_filters li a {
-  outline: none;
-  text-decoration: none;
-  color: #333;
-  cursor: pointer;
-}
 
-.left_menu_filters li a:hover {
+.left_menu__filters li a:hover,
+.left_menu__filters li a.activeLink {
   background-color: #fff;
+}
+.left_menu__filters li a.activeLink {
+  font-weight: bold;
 }

@@ -1,0 +1,92 @@
+.section_item {
+  display: flex;
+  width: 100%;
+  max-width: 700px;
+  border-bottom: 1px solid #f0f0f0;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  padding-bottom: 10px;
+}
+.section_item input {
+  margin-right: 15px;
+}
+.section_item span {
+  margin-right: 10px;
+}
+
+span.resent_task__date {
+  font-size: 10px;
+  color: green;
+  font-weight: bold;
+}
+.deleteButton {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1;
+  color: #000;
+  text-shadow: 0 1px 0 #fff;
+  filter: alpha(opacity=20);
+  opacity: 0.2;
+  padding: 0;
+  cursor: pointer;
+  background: 0 0;
+  border: 0;
+  padding-bottom: 5px;
+}
+button.deleteButton:hover {
+  opacity: 0.5;
+}
+
+.completed {
+  font-style: italic;
+  color: #cdcdcd;
+  text-decoration: line-through;
+  -webkit-transition: text-decoration 0.1s ease-in, color 0.1s ease-in;
+  transition: text-decoration 0.1s ease-in, color 0.1s ease-in;
+}
+
+.edit_task_form {
+  display: flex;
+}
+.edit_task_form input {
+  outline: none;
+  margin-right: 5px;
+  width: 100%;
+  max-width: 200px;
+}
+
+.section_item__checkbox {
+  cursor: pointer;
+  padding-top: 2px;
+}
+.section_item__checkbox input {
+  display: none;
+}
+
+.section_item__checkbox .custom_checkbox {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 1px solid #808080;
+  border-radius: 4px;
+  transition: background-color 150ms ease-in;
+  transition: background-image 150ms ease-in;
+}
+.section_item__checkbox input[type="checkbox"]:checked + .custom_checkbox,
+.section_item__checkbox:hover .custom_checkbox {
+  background: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHg9IjBweCIgeT0iMHB4Igp3aWR0aD0iMTYiIGhlaWdodD0iMTYiCnZpZXdCb3g9IjAgMCAyMjYgMjI2IgpzdHlsZT0iIGZpbGw6IzAwMDAwMDsiPjxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0ibm9uemVybyIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIHN0cm9rZS1saW5lY2FwPSJidXR0IiBzdHJva2UtbGluZWpvaW49Im1pdGVyIiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiIHN0cm9rZS1kYXNoYXJyYXk9IiIgc3Ryb2tlLWRhc2hvZmZzZXQ9IjAiIGZvbnQtZmFtaWx5PSJub25lIiBmb250LXdlaWdodD0ibm9uZSIgZm9udC1zaXplPSJub25lIiB0ZXh0LWFuY2hvcj0ibm9uZSIgc3R5bGU9Im1peC1ibGVuZC1tb2RlOiBub3JtYWwiPjxwYXRoIGQ9Ik0wLDIyNnYtMjI2aDIyNnYyMjZ6IiBmaWxsPSJub25lIj48L3BhdGg+PGcgZmlsbD0iIzY2NjY2NiI+PHBhdGggZD0iTTIwNC44MTI1LDM5LjQ1MDY5bC0xMjcuMTI1LDEyNy4xMjVsLTUxLjUzNDE3LC01MS40NzlsLTQuOTY1ODMsLTUuMDIxbC05Ljk4NjgxLDkuOTg2ODFsNS4wMjEsNC45NjU4M2w2MS40NjU4MSw2MS41MjA5OWwxMzcuMTExODEsLTEzNy4xMTE4MXoiPjwvcGF0aD48L2c+PC9nPjwvc3ZnPg==")
+    50% 50% no-repeat;
+  background-size: 100%;
+  background-color: rgba(128, 128, 128, 0.1);
+}
+
+.addButton {
+  background: 0;
+  background-color: #db4c3f;
+  color: #fff;
+  text-shadow: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+  font-size: 12px;
+  border-radius: 3px;
+}

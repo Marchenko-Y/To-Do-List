@@ -1,7 +1,7 @@
 import toDoListReducer from "./reducers/todolist-reducer";
 import { reducer as formReducer } from "redux-form";
 import thunkMidleware from "redux-thunk";
-import { combineReducers, createStore, applyMiddleware } from "redux";
+import { combineReducers, createStore, applyMiddleware, compose } from "redux";
 
 // const store = configureStore({
 //   reducer: {
@@ -15,7 +15,13 @@ const reducers = combineReducers({
   form: formReducer
 });
 
-let store = createStore(reducers, applyMiddleware(thunkMidleware));
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const store = createStore(
+  reducers,
+  composeEnhancers(applyMiddleware(thunkMidleware))
+);
+
+// let store = createStore(reducers, applyMiddleware(thunkMidleware));
 
 export default store;
 

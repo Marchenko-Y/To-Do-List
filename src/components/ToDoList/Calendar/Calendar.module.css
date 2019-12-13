@@ -1,0 +1,6 @@
+#calendar_block .my-custom-datepicker-component {
+  width: 160px;
+  border: none;
+  background: white;
+  margin-left: -10px;
+}

@@ -1,0 +1,33 @@
+.header {
+  grid-area: header;
+  background-color: #db4c3f;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+.header__inner {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 44px;
+}
+
+.header__logo {
+  display: flex;
+  margin: 0 15px;
+  color: #fff;
+}
+.header__logo img {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+.header__logo h3 {
+  font-size: 14px;
+  margin-left: 5px;
+  text-transform: uppercase;
+}

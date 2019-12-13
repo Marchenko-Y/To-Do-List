@@ -1,5 +1,5 @@
 import React from "react";
-import "../ToDoList.css";
+import styles from "./ToDo.module.css";
 import EditModeReduxForm from "./EditTaskForm";
 import format from "date-fns/format";
 
@@ -23,27 +23,32 @@ const ToDo = props => {
     <div key={props.id}>
       {/* если режим редактирования задачи false: */}
       {!props.editMode && (
-        <div>
-          <input
-            type="checkbox"
-            checked={props.checked}
-            onChange={changedCheckboxHandler}
-            id={props.id}
-          />
+        <div className={styles.section_item}>
+          <div className={styles.section_item__checkbox}>
+            <label>
+              <input
+                type="checkbox"
+                checked={props.checked}
+                onChange={changedCheckboxHandler}
+                id={props.id}
+              />
+              <span className={styles.custom_checkbox}></span>
+            </label>
+          </div>
           <span
             id={props.id}
             onClick={changedEditModeHandler}
-            className={props.checked ? "completed" : null}
+            className={props.checked ? styles.completed : null}
           >
             {props.text}
 
             {props.nameOfDay === "Recent" && (
-              <span className="dateOfRecentTasks">
+              <span className={styles.resent_task__date}>
                 {format(new Date(props.date), " dd MMM")}
               </span>
             )}
           </span>
-          <button onClick={deleteTask} className="deleteButton">
+          <button onClick={deleteTask} className={styles.deleteButton}>
             x
           </button>
         </div>

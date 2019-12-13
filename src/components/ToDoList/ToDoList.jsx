@@ -1,12 +1,12 @@
 import React from "react";
-import "./ToDoList.css";
+import styles from "./ToDoList.module.css";
 import SectionDay from "./SectionDay/SectionDay";
 import Footer from "../Footer/Footer";
 
 const ToDoList = props => {
   return (
-    <div className="main grid_item">
-      <div className="section-day">
+    <div className={styles.main}>
+      <div className={styles.section_day}>
         <SectionDay
           currentDate={props.toDoListInformation.date}
           toogleChecked={props.toogleChecked}
@@ -17,9 +17,9 @@ const ToDoList = props => {
           saveEditedTask={props.saveEditedTask}
           addTask={props.addTaskThunk}
         />
-      </div>
 
-      <Footer listName={props.listName} />
+        <Footer listName={props.listName} tasks={props.tasks} />
+      </div>
     </div>
   );
 };
